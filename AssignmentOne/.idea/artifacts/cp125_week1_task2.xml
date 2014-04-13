@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="cp125-week1-task2">
+    <output-path>$PROJECT_DIR$/out/artifacts/cp125-week1-task2</output-path>
+    <root id="archive" name="cp125-week1-task2.jar">
+      <element id="module-output" name="AssignmentOne" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/cp125-week1-task2/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
