@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AssignmentTwo.iml" filepath="$PROJECT_DIR$/AssignmentTwo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HeapBreaker/HeapBreaker.iml" filepath="$PROJECT_DIR$/HeapBreaker/HeapBreaker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StackBreaker/StackBreaker.iml" filepath="$PROJECT_DIR$/StackBreaker/StackBreaker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week2CodeSample/Week2CodeSample.iml" filepath="$PROJECT_DIR$/Week2CodeSample/Week2CodeSample.iml" />
+    </modules>
+  </component>
+</project>
+
