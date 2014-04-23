@@ -1,3 +1,9 @@
+ * This is an attempt to break the stack by creating an array of doubles (primitive) and then assigning
+ * am enormous value to a local variable in a method. However, this breaks the heap rather than the
+ * stack. Why? Aren't either [a] arrays or primitives (that aren't an element of an object) stored on the stack,
+ * or [b] temp/local variables stored on the stack?
+
+
 C:\Java\jdk1.7.0_51\bin\java -Didea.launcher.port=7534 "-Didea.launcher.bin.path=C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 13.1\bin" -Dfile.encoding=UTF-8 -classpath "C:\Java\jdk1.7.0_51\jre\lib\charsets.jar;C:\Java\jdk1.7.0_51\jre\lib\deploy.jar;C:\Java\jdk1.7.0_51\jre\lib\javaws.jar;C:\Java\jdk1.7.0_51\jre\lib\jce.jar;C:\Java\jdk1.7.0_51\jre\lib\jfr.jar;C:\Java\jdk1.7.0_51\jre\lib\jfxrt.jar;C:\Java\jdk1.7.0_51\jre\lib\jsse.jar;C:\Java\jdk1.7.0_51\jre\lib\management-agent.jar;C:\Java\jdk1.7.0_51\jre\lib\plugin.jar;C:\Java\jdk1.7.0_51\jre\lib\resources.jar;C:\Java\jdk1.7.0_51\jre\lib\rt.jar;C:\Java\jdk1.7.0_51\jre\lib\ext\access-bridge-64.jar;C:\Java\jdk1.7.0_51\jre\lib\ext\dnsns.jar;C:\Java\jdk1.7.0_51\jre\lib\ext\jaccess.jar;C:\Java\jdk1.7.0_51\jre\lib\ext\localedata.jar;C:\Java\jdk1.7.0_51\jre\lib\ext\sunec.jar;C:\Java\jdk1.7.0_51\jre\lib\ext\sunjce_provider.jar;C:\Java\jdk1.7.0_51\jre\lib\ext\sunmscapi.jar;C:\Java\jdk1.7.0_51\jre\lib\ext\zipfs.jar;C:\IdeaProjects\UWJavaSpring\AssignmentTwo\out\production\StackBreaker;C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 13.1\lib\idea_rt.jar" com.intellij.rt.execution.application.AppMain StackBreaker
 Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
 	at StackBreaker.main(StackBreaker.java:11)

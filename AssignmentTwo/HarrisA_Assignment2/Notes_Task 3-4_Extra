@@ -1,0 +1,78 @@
+Note:
+
+My first HeapBreaker relied on overwhelming the heap with multiple copies of something really
+big. However, I discovered in my first two attempts at breaking the stack that it's much easier
+to break the heap than the stack. StackBreaker and StackBreaker2 don't bother the stack, but
+bother are successful at breaking the heap without relying on a large file.
+
+I was unsuccessful in finding a way to break the stack. I kept breaking the heap instead. A
+fellow student gave me a tip about recursive method, so I gave that a whirl and managed to break
+the stack.
+
+
+Task 3 Answer
+
+There are two command line arguments you can use to set JVM heap sizes: -Xms and -Xmx.
+
+From what I found, it appears you can add a system environment variable named _JAVA_OPTIONS
+(under Windows), and set the heap size values there. For example, if you want a 512Mb
+initial (Xms) and 1024Mb maximum (Xmx) heap size you could use:
+
+SET _JAVA_OPTIONS = -Xms512m -Xmx1024m
+
+I couldn't find for sure how to do this programatically, but reading through the Runtime
+javadoc it seems like the Runtime.exec() method enables command line input.
+(http://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#exec(java.lang.String))
+
+So perhaps it would look something like this:
+
+    Runtime.getRuntime().exec("cmd.exe /c java -Xms512m -Xmx1024m")
+
+But that goes into something called processes which I don't understand, and I'm not going
+down that rabbit hole right now.
+
+There's also some stuff about setting the young heap and old heap, but I'm also not going
+to delve into that right yet either.
+
+
+
+Task 4 Answer
+
+Q: Why is stack exhaustion catastrophic and heap exhaustion less so?
+
+A: Heap space is requested by a program when it creates an object. If there’s no space on
+the heap to create the object, the well-written method can handle the rejection gracefully.
+If the stack is exhausted, however, the method will not be able to run in the first place,
+and if a method can’t run it can’t handle the memory problem.
+
+Q: What actions can be taken when an OutOfMemoryError occurs?
+
+A: Since a heap memory error simply prevents a running program from performing some of its
+functions, a heap error can be handled by the running program, which can follow a corrective
+path such as freeing up space, requesting more heap space, or, at worst, shutting down the
+program gracefully with appropriate UI and logging behavior. (I’ve read that Java heap space
+is increased dynamically if needed, but I haven’t confirmed that.)
+
+A stack memory error seems to be trickier, since these errors make it difficult for a program
+to run at all. There are few options besides doing a memory dump and shutting down. One
+interesting item I read suggested that since a stack memory error prevents new objects from
+being created, the program could create objects in advance that could be used to handle stack
+memory exhaustion.
+
+
+
+Extra
+
+allocated = false
+while allocated = false
+    find next openBlock
+    if openBlock >= requestedBlock
+        allocate requestedBlock
+        allocated = true
+    else
+		find next usedBlock
+        move usedBlock to openBlock
+loop
+return allocated
+
+(The calling method will perform the appropriate response action based on the value of allocated.)
