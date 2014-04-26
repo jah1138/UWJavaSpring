@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
+ * Note: This program relies on importing a 6GB image file, which I haven't included in
+ * as a resource out of respect for your bandwidth. So, this won't work.
+ *
  * Author: Alex
  * Version: 4/20/2014.
  */
@@ -18,7 +21,7 @@ public class BigPic {
         int i = 0;
         while (1 > 0) {
             try {
-                list.add(ImageIO.read(new File("C:\\Challenger.jpg")));
+                list.add(ImageIO.read(new File("C:\\bigImage.jpg")));
             }
             catch (IOException e) {
                 e.printStackTrace();
