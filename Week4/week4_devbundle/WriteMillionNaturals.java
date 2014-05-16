@@ -1,4 +1,4 @@
-package cp125.week4;
+package cp125.week4.devbundle;
 
 /**
  * @author Stuart Maclean

@@ -1,0 +1,27 @@
+Task 3
+
+Q:
+
+What can you say about the Properties class's ability to preserve the order of
+entries in the source text file? Compare the order of entries on disk and when
+printed out in your program.
+
+A:
+
+I hadn't read ahead in the assignment so I didn't know to expect the reordering.
+When I first ran BuddyProperties I immediately saw they were different and I
+thought for a moment I'd done something wrong.
+
+The Properties class obviously doesn't make a point of retaining the entry order
+of the config file. I can see why it wouldn't really matter: first of all, a
+hash table or hash map is designed for retrieving individual values by referencing
+a key, so it's irrelevant whether the values are stored in a content-based sequence.
+If it's important to have an ordered dataset, the original program should address
+that by either sorting the data after loading it, or by using structures that
+preserve order.
+
+I read through the source code of Properties.load(InputStream inStream) to see
+whether that might have some impact on the data order, but there's some pretty
+arcane stuff going on in that method. I doubt it anyway, because it's processing
+the data in sequence as read directly from the stream. I'm guessing it's just
+hash table behavior.
