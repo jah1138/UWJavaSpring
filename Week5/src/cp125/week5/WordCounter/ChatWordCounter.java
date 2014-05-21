@@ -34,7 +34,6 @@ public class ChatWordCounter {
     public static void main(String[] args) throws FileNotFoundException {
 
         System.out.println(dir + "transcript.txt");
-
         File transcript = new File(dir, "transcript.txt");
         if (!transcript.isFile()) {
             throw new FileNotFoundException("File " + transcript.getName() + " not found");
@@ -74,18 +73,18 @@ public class ChatWordCounter {
             int wordCount = 0;
             totals.put(name, wordCount);
         System.out.println(name);
-            for (String key : wordList.keySet()) {
-                if (key.startsWith(name + ":")) {
-                    System.out.println(key.substring(name.length()+1) + ": - " + wordList.get(key) + " times");
-                }
-                else {
-                    continue;
-                }
-                wordCount += wordList.get(key);
-                totals.put(name, wordCount);
-                System.out.println("Totals: Name: " + name + ", count : " + totals.get(name));
+        for (String key : wordList.keySet()) {
+            if (key.startsWith(name + ":")) {
+                System.out.println(key.substring(name.length()+1) + ": - " + wordList.get(key) + " times");
             }
-            System.out.println();
+            else {
+                continue;
+            }
+            wordCount += wordList.get(key);
+            totals.put(name, wordCount);
+//                System.out.println("Totals: Name: " + name + ", count : " + totals.get(name));
+        }
+        System.out.println();
         }
         System.out.println("Word counts:");
         for (String name : totals.keySet()) {

@@ -1,0 +1,21 @@
+Answer the following questions about hashing. Please submit your answers in a file called 'Part1.txt'.
+
+Q: Class Object defines an instance method int hashCode(). How many distinct hash codes could there be, for all objects which could possibly be created by all Java pro-grams?
+
+A: Since the hash code is an integer, the list of all potential hash codes is the complete range of integers available in Java, which is  -2^31 to 2^31-1 (-2,147,483,648 to 2,147,483,647).
+
+Q: In theory, the number of objects that could be created by all Java programs is bigger than the number above. Therefore, some objects must hash to the same value. What do we call this scenario?
+
+A: This is called a "hash collision".
+
+Q: We assume that equals is expensive to compute but that hashCode is cheaper. Given this, why are hash tables better than say array-based lists for a program that performs many data 'lookups' (i.e. Map.get)? Recall that the goal is to minimize the number of equals checks.
+
+A: When performing a list-based lookup, the program has to check every single object contained in the list until it finds a match (or reaches the end of the list). If the list contains a million objects, the lookup will have to perform a maximum of 1 million comparisons for every item searched. A hash table, on the other hand, distributes objects into smaller subgroups, with each subgroup containing objects of a specific hash range. When performing a hash lookup, the program only has to identify the hash value of the search item and check in the subgroup which contains objects in that hash range. If 1 million objects are distributed into subgroups of 1,000 objects each, the lookup will have to perform a maximum of only 1,000 comparisons for each item searched. That's .001 of 1 million comparisons! 
+
+Q: If I implement some class C and override Object.equals(Object), what other instance method must I override also?
+
+A: If you change the definition of equality between objects of a type, you must also change how the hashcode is created. Otherwise, the hashcode will distribute objects in a hash map based on a criteria that is different from your definition of object equality, and you will run into problems referencing objects in the table.
+
+Q: If I have a class D and implement its hashCode method to always return a constant number, say 15, what can you say about the performance of a hash table containing objects of this class?
+
+A: You might as well put 'em in a list!
