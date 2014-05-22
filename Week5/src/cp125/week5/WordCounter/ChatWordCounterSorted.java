@@ -76,6 +76,7 @@ public class ChatWordCounterSorted {
         catch (IOException ioe) {
             System.err.println("IO exception");
         }
+
         return wordMap;
     }
 

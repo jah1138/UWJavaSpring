@@ -32,9 +32,9 @@ public class TranscriptProcessing {
 
 	static public void main( String[] args ) {
 
-        String path = System.getProperty("user.home");
+        String path = System.getProperty("user.home") + "\\";
         String filename = "transcript.txt";
-		File f = new File( path + "\\" + filename );
+		File f = new File( path + filename );
 //        File f = new File( "transcript.txt" );  // <<< original
 		if( !( f.isFile() && f.canRead() ) ) {
 			System.err.println( "Cannot load: " + f );

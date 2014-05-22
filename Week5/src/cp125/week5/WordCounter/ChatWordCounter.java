@@ -25,7 +25,7 @@ import java.util.*;
  * Author: Alex
  * Version: 5/10/2014.
  */
-public class ChatWordCounter {
+public class  ChatWordCounter {
 
     private static String userHome = System.getProperty("user.home");
     private static File dir = new File(userHome);
