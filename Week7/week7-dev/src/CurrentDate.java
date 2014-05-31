@@ -1,6 +1,3 @@
-package cp125.week7;
-
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;

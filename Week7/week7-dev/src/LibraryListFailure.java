@@ -1,13 +1,13 @@
-package cp125.week7;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *  @author Stuart Maclean
  *
- * An extension of the FastLibrary program, which used threads to create
- * 10,000,000 Book objects.
+ * An extension of the FastLibrary program, which used threads to
+ * create 10,000,000 Book objects, or try to at least. We saw it
+ * produce somewhat arbitary book counts, few of which were actually
+ * the desired 10,000,000.
  *
  * This time we attempt to add each book to an ArrayList, from many
  * threads concurrently. The list is thus the data structure shared
@@ -31,9 +31,9 @@ public class LibraryListFailure {
 		final List<Book> books = new ArrayList<Book>();
 		
 		/*
-		  The unit of work, a 'job' in thread terminology. All threads will
-		  use this one Runnable, which is perfectly OK.  Note how this
-		  is an anonymnous class, we provide no name for it.
+		  The unit of work, a 'job' in thread terminology. All threads
+		  will use this one Runnable, which is perfectly OK.  Note how
+		  this is an anonymnous class, we provide no name for it.
 		*/
 		Runnable r = new Runnable() {
 				public void run() {
@@ -51,13 +51,14 @@ public class LibraryListFailure {
 		for( int i = 1; i <= T; i++ ) {
 			// to start a Thread, hand it a runnable and call start()
 			Thread t = new Thread( r );
-			t.start();
 			ts[i-1] = t;
+			t.start();
 		}
 
 		/*
-		  And wait for each job to finish.  If a thread encounters
-		  an exception it does not catch, it ends.  The join is still valid.
+		  And wait for each job to finish.  If a thread encounters an
+		  exception it does not catch, it ends.  The join is still
+		  valid.
 		*/
 		for( int i = 1; i <= T; i++ ) {
 			Thread t = ts[i-1];
@@ -67,7 +68,7 @@ public class LibraryListFailure {
 			}
 		}
 
-		// and print the final book count. We expect N, but may not always get it!
+		// Print the final book count. We expect N, but may not always get it!
 		System.out.println( "BookCount " + Book.getCount() );
 	}
 }

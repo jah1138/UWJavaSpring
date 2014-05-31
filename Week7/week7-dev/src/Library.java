@@ -1,8 +1,3 @@
-package cp125.week7;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Stuart Maclean
  *

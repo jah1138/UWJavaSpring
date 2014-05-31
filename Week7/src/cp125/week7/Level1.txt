@@ -1,0 +1,19 @@
+Level 1
+
+The error is happening when the book is being added to the ArrayList. To help figure out what might be happening I
+looked at the ArrayList code. I saw that the exception happened at the line "elementData[size++] = e;".
+
+That line adds the element to the array, and somehow size++ ends up referring to a nonexistent index. Let’s look at
+the line before the add also:
+
+ensureCapacityInternal(size + 1);
+elementData[size++] = e;
+
+The first line checks the array to see if there’s room for one more element. If so, it returns and the element is
+added to the next index. If the end of the available indexes has been reached, it increases the size of the list to
+add more indexes, and then returns control to the add method.
+
+Imagine that our thread clears the capacity check, but then is stopped by the JVM before adding the element to the
+next index. While it’s stopped, other objects are added that actually DO fill up the list to capacity. When our
+thread is restarted, it will execute the next line of code and try to add the element to the index at size++, which
+now is an index that doesn’t exist. Index out of bounds!

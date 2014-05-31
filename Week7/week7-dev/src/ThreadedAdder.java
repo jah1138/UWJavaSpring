@@ -1,5 +1,3 @@
-package cp125.week7;
-
 /**
  * @author Stuart Maclean
  *
@@ -34,7 +32,8 @@ public class ThreadedAdder {
 		long max = perThread;
 
 		for( int i = 0; i < threads; i++ ) {
-			System.out.println( "Thread " + (i+1) + " " + min + " -> " +max );
+			System.out.println( "Thread " + (i+1) + " " +
+								min + " -> " +max );
 			AdderThread at = new AdderThread( min, max );
 			ts[i] = at;
 			at.start();

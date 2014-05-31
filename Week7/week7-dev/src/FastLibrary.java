@@ -1,5 +1,3 @@
-package cp125.week7;
-
 /**
  *  @author Stuart Maclean
  *

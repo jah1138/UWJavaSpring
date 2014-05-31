@@ -1,5 +1,3 @@
-package cp125.week7;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -17,7 +15,7 @@ public class ConsoleChat {
 
 		Thread consoleThread = new ConsoleThread();
 
-		if( false ) {
+		if( true ) {
 			consoleThread.setDaemon( true );
 		}
 		
