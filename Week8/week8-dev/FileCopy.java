@@ -1,5 +1,3 @@
-package cp125.week8;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;

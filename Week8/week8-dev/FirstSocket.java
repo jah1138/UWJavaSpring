@@ -1,5 +1,3 @@
-package cp125.week8;
-
 import java.io.IOException;
 import java.net.Socket;
 

@@ -1,38 +1,36 @@
-package cp125.week8;
-
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
  * @author Stuart Maclean
  *
- *
- * Listen on a free port for a connection.  Then use a single
- * OutputStream.write call to write some nominal data (all zeros) to
- * the client.  Default is 8K, but can request bigger buffer via
- * args[1].
- *
- * Used in conjunction with Read8K to show that the reader must NOT
- * assume that just because we did one write that all the data can be
- * read with one read.
- *
- * @see Read8K
+ * First server socket program.  Given a port number supplied on cmd
+ * line, attempt a passive wait on that server socket.  When (if!) a
+ * client ever connects, print out the connection details.  No data flow,
+ * just connection stuff.
+
+ * This program uses java.net.ServerSocket and java.net.Socket objects,
+ * which is how we do TCP/IP programming in Java.
+
+ * Possible errors:
+
+ * 1 No permissions to 'listen' on the port
+ * 2 port out of range
+ * 3 port already bound, some other program already listening
  */
-public class Write8K {
+public class FirstServerSocket {
 
 	static public void main( String[] args ) {
 
-		int n = 8;
-		
-		String usage = "Usage: " + Write8K.class.getName() + " port n?";
+		String usage = "Usage: " + FirstServerSocket.class.getName() +
+			" port";
 
 		if( args.length < 1 ) {
 			System.err.println( usage );
 			System.exit(1);
 		}
-		
+
 		int port = -1;
 		try {
 			port = Integer.parseInt( args[0] );
@@ -41,24 +39,12 @@ public class Write8K {
 			System.exit(1);
 		}
 		
-
-		if( args.length >= 2 ) {
-			try {
-				n = Integer.parseInt( args[1] );
-			} catch( NumberFormatException nfe ) {
-			}
-		}
-
 		try {
 			ServerSocket ss = new ServerSocket( port );
 			System.out.println( "Listening on : " + ss );
 			// The accept call blocks us until a client program connects...
 			Socket s = ss.accept();
 			System.out.println( "Connected to : " + s );
-
-			OutputStream os = s.getOutputStream();
-			byte[] ba = new byte[1024*n];
-			os.write( ba );
 			s.close();
 			ss.close();
 		} catch( IOException ioe ) {

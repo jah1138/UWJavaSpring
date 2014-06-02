@@ -1,5 +1,3 @@
-package cp125.week8;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,7 +24,7 @@ import java.net.Socket;
  * server, if we just connect and do nothing.  A (primitive) denial of
  * service (DoS)
  */
-public class R  everseClient {
+public class ReverseClient {
 
 	static public void main( String[] args ) {
 

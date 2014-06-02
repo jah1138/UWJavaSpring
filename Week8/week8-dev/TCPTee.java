@@ -1,5 +1,3 @@
-package cp125.week8;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,7 +22,7 @@ import java.net.Socket;
  * Example: inspect the HTTP traffic data between your web browser and
  * some arbitrary web site, say news.bbc.co.uk:
  *
- * 1 java cp125.week8.TCPTee 12345 news.bbc.co.uk 80
+ * 1 java TCPTee 12345 news.bbc.co.uk 80
  *
  * 2 Point your web browser at http://localhost:12345/
  *
